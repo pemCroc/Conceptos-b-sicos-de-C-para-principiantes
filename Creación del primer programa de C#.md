@@ -3,7 +3,6 @@
 ### Descripción breve
 En este video se explica cómo crear y ejecutar un programa básico en C#, conocido como "Hello World". Se introduce el flujo de trabajo fundamental que se seguirá para desarrollar aplicaciones en este lenguaje.
 
-### Contenido de la Nota
 El objetivo del ejercicio es familiarizarnos con los pasos básicos para crear, escribir y ejecutar un programa en C#. Aunque no se profundiza en los conceptos técnicos, se establecen las bases del proceso de desarrollo.
 
 #### Pasos para Crear el Programa
@@ -64,5 +63,4 @@ namespace HelloWorld
 }
 ```
 
-Este video marca un gran paso inicial en el aprendizaje de C#, presentando el flujo básico de creación y ejecución de programas. Con este ejemplo sencillo, aprendemos la importancia de la precisión en la escritura del código y cómo resolver errores comunes que podrían surgir.
 
