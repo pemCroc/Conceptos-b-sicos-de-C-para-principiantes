@@ -1,0 +1,82 @@
+### Video 14
+
+### Conceptos clave 
+
+#### 1. Ámbito (scope) de variables
+El ámbito determina dónde una variable es accesible en el código. Las variables solo existen dentro del bloque de código donde se declaran y sus bloques interiores.
+
+- **Ejemplo:**
+  ```csharp
+  for (int i = 0; i < 10; i++)
+  {
+      Console.WriteLine(i); // Acceso permitido dentro del bucle
+  }
+  // Console.WriteLine(i); // Error: i no existe fuera del bucle
+  ```
+
+- Declarar variables fuera de un bloque permite su acceso desde más lugares:
+  ```csharp
+  string j = "";
+  for (int i = 0; i < 10; i++)
+  {
+      j = i.ToString();
+  }
+  Console.WriteLine(j); // Acceso permitido
+  ```
+
+#### 2. Modificadores de accesibilidad: `public` y `private`
+Los modificadores de accesibilidad controlan qué partes del código pueden acceder a clases, métodos y propiedades.
+
+- **`public`:** Permite el acceso desde cualquier lugar del código.
+- **`private`:** Restringe el acceso solo a la clase donde se declara.
+
+- **Ejemplo de clase con modificadores:**
+  ```csharp
+  class Car
+  {
+      public string Make { get; set; } // Accesible desde fuera de la clase
+      private string EngineNumber { get; set; } // Solo accesible dentro de la clase
+
+      public void ShowDetails()
+      {
+          Console.WriteLine($"Make: {Make}, Engine: {EngineNumber}");
+      }
+  }
+
+  Car myCar = new Car();
+  myCar.Make = "Toyota";
+  // myCar.EngineNumber = "12345"; // Error: EngineNumber es privado
+  ```
+
+#### 3. Encapsulación y organización del código
+Encapsular significa ocultar los detalles internos de una clase y exponer solo lo necesario mediante métodos y propiedades públicas.
+
+- **Analogía del televisor:** Los usuarios solo interactúan con los controles visibles (encendido, volumen, etc.), pero no necesitan saber cómo funciona internamente el televisor.
+
+- **Ejemplo de encapsulación:**
+  ```csharp
+  public class BankAccount
+  {
+      private decimal balance;
+
+      public void Deposit(decimal amount)
+      {
+          balance += amount;
+      }
+
+      public decimal GetBalance()
+      {
+          return balance;
+      }
+  }
+
+  BankAccount account = new BankAccount();
+  account.Deposit(100);
+  Console.WriteLine(account.GetBalance()); // Saldo accesible solo mediante el método público
+  ```
+
+#### 4. Otros modificadores de accesibilidad
+- **`protected`:** Acceso permitido solo dentro de la clase y sus clases derivadas.
+- **`internal`:** Acceso permitido solo dentro del mismo ensamblado o proyecto.
+
+---
