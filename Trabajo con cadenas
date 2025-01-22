@@ -1,0 +1,78 @@
+### Video 12
+
+---
+
+### Conceptos clave y ejemplos
+
+#### 1. Uso de caracteres especiales y escape
+- **Insertar comillas dobles:**
+  ```csharp
+  string myString = "Mi \"vida\" irónica";
+  Console.WriteLine(myString); // Mi "vida" irónica
+  ```
+- **Nueva línea:**
+  ```csharp
+  string myString = "Primera línea\nSegunda línea";
+  ```
+- **Uso del backslash real:**
+  ```csharp
+  string myPath = "C:\\Users\\Nombre";
+  Console.WriteLine(myPath); // C:\Users\Nombre
+  ```
+  O usar `@` para cadenas literales:
+  ```csharp
+  string myPath = @"C:\Users\Nombre";
+  ```
+
+#### 2. Formateo de cadenas
+- Usar `string.Format` para reemplazos y formatos:
+  ```csharp
+  string mensaje = string.Format("El valor es {0:C}", 123.45);
+  Console.WriteLine(mensaje); // El valor es $123.45
+  ```
+- **Formateo específico:**
+  ```csharp
+  string numero = string.Format("{0:N}", 123456789); // 123,456,789.00
+  string porcentaje = string.Format("{0:P}", 0.1234); // 12.34 %
+  ```
+- **Formato personalizado:**
+  ```csharp
+  string telefono = string.Format("{0:(###) ###-####}", 1234567890);
+  Console.WriteLine(telefono); // (123) 456-7890
+  ```
+
+#### 3. Manipulación de cadenas
+- **Subcadenas:**
+  ```csharp
+  string texto = "Hola, mundo";
+  string sub = texto.Substring(6); // "mundo"
+  ```
+- **Reemplazos:**
+  ```csharp
+  string modificado = texto.Replace("mundo", "C#");
+  ```
+- **Cambiar mayúsculas y minúsculas:**
+  ```csharp
+  Console.WriteLine(texto.ToUpper()); // "HOLA, MUNDO"
+  ```
+- **Eliminar espacios al inicio y final:**
+  ```csharp
+  string limpio = texto.Trim();
+  ```
+- **Longitud de una cadena:**
+  ```csharp
+  Console.WriteLine(texto.Length); // Longitud de la cadena
+  ```
+
+#### 4. Eficiencia: `StringBuilder`
+Cuando se realizan muchas concatenaciones, usar `StringBuilder` en lugar de `+` para mejorar el rendimiento:
+```csharp
+StringBuilder sb = new StringBuilder();
+for (int i = 0; i < 100; i++)
+{
+    sb.Append(i).Append("-");
+}
+Console.WriteLine(sb.ToString());
+```
+
+---
