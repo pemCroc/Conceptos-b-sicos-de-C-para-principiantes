@@ -1,0 +1,80 @@
+### Video 17
+
+### Conceptos clave
+
+#### 1. Diferencia entre arrays y colecciones
+- **Arrays:** Tienen un tamaño fijo y requieren definir el tipo de dato y la cantidad de elementos al declararlos.
+- **Colecciones:** Son dinámicas y ofrecen funciones adicionales como filtrado, ordenamiento y búsqueda.
+
+**Ejemplo de array:**
+```csharp
+int[] numbers = new int[5];
+numbers[0] = 10;
+```
+
+**Ejemplo de colección `List`:**
+```csharp
+List<int> numbers = new List<int>();
+numbers.Add(10);
+numbers.Add(20);
+```
+
+---
+
+#### 2. Uso de `List`
+`List` es una colección genérica que permite almacenar elementos de un tipo específico. Esto evita errores al intentar almacenar tipos diferentes.
+
+**Declaración:**
+```csharp
+List<Car> cars = new List<Car>();
+Car car1 = new Car { Make = "Toyota", Model = "Corolla" };
+Car car2 = new Car { Make = "Honda", Model = "Civic" };
+
+cars.Add(car1);
+cars.Add(car2);
+```
+
+**Iteración sobre una lista:**
+```csharp
+foreach (var car in cars)
+{
+    Console.WriteLine(car.Make);
+}
+```
+
+---
+
+#### 3. Uso de `Dictionary`
+Un `Dictionary` almacena pares clave-valor, donde la clave es única y se usa para identificar un valor.
+
+**Declaración:**
+```csharp
+Dictionary<string, Car> cars = new Dictionary<string, Car>();
+
+Car car1 = new Car { Make = "Toyota", Model = "Corolla" };
+cars.Add("VIN123", car1);
+```
+
+**Acceso por clave:**
+```csharp
+Console.WriteLine(cars["VIN123"].Make); // Toyota
+```
+
+---
+
+#### 4. Inicialización de objetos y colecciones
+- **Inicialización de objetos:** Permite asignar valores a las propiedades en el momento de su creación.
+  ```csharp
+  Car car = new Car { Make = "Nissan", Model = "Altima" };
+  ```
+
+- **Inicialización de colecciones:** Crea una colección e inicializa sus elementos al mismo tiempo.
+  ```csharp
+  List<Car> cars = new List<Car>
+  {
+      new Car { Make = "Ford", Model = "Mustang" },
+      new Car { Make = "Chevrolet", Model = "Camaro" }
+  };
+  ```
+
+---
