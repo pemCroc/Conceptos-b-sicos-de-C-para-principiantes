@@ -1,0 +1,71 @@
+### Video 13
+
+### Conceptos clave y ejemplos
+
+#### 1. Qué es una clase
+- Una clase es un contenedor que agrupa propiedades y métodos relacionados.
+- Ejemplo: La clase `Console` contiene métodos como `WriteLine`, `ReadLine` y `Clear`, que tienen en común su relación con la consola.
+
+En resumen:
+- **Clase:** Es el plano o definición.
+- **Objeto:** Es una instancia de una clase creada en memoria.
+
+#### 2. Creación de una clase
+Definir una clase permite agrupar datos relacionados:
+```csharp
+class Car
+{
+    public string Make { get; set; }
+    public string Model { get; set; }
+    public int Year { get; set; }
+    public string Color { get; set; }
+}
+```
+- **Propiedades:** Definen atributos del objeto, como marca, modelo, año y color.
+- **Métodos:** Definen comportamientos o cálculos relacionados con la clase.
+
+#### 3. Crear una instancia de una clase
+Usamos la palabra clave `new` para crear un objeto:
+```csharp
+Car myCar = new Car();
+myCar.Make = "Toyota";
+myCar.Model = "Corolla";
+myCar.Year = 2022;
+myCar.Color = "Azul";
+
+Console.WriteLine($"{myCar.Make} {myCar.Model}, {myCar.Year}, {myCar.Color}");
+```
+
+#### 4. Incorporar métodos dentro de la clase
+Los métodos pueden realizar operaciones con las propiedades del objeto:
+```csharp
+public decimal DetermineMarketValue()
+{
+    if (Year > 1990)
+        return 10000m;
+    else
+        return 2000m;
+}
+```
+- **Llamada al método:**
+  ```csharp
+  Console.WriteLine(myCar.DetermineMarketValue());
+  ```
+
+#### 5. Uso de métodos auxiliares externos
+También podemos crear métodos independientes que acepten instancias de clase como parámetros:
+```csharp
+static decimal CalculateInsurance(Car car)
+{
+    return car.Year > 2000 ? 500m : 300m;
+}
+
+Console.WriteLine(CalculateInsurance(myCar));
+```
+
+---
+
+### Analogía: Clase como molde o plantilla
+- Una clase es como un molde de galletas: define la forma, pero cada galleta (objeto) es una instancia única. Aunque sigan el mismo molde, cada galleta puede tener decoraciones diferentes.
+- Ejemplo: Puedes tener varios objetos de la clase `Car`, cada uno representando un auto distinto.
+---
