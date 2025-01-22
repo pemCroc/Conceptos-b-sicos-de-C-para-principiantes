@@ -1,0 +1,59 @@
+### Video 11
+
+---
+
+### Conceptos clave y ejemplos
+
+#### 1. Crear un objeto `DateTime`
+- Representar la fecha y hora actual:
+  ```csharp
+  DateTime myValue = DateTime.Now;
+  Console.WriteLine(myValue.ToString()); // Fecha/hora predeterminada
+  ```
+- Crear fechas específicas:
+  ```csharp
+  DateTime myBirthday = new DateTime(1990, 12, 25); // Año, Mes, Día
+  Console.WriteLine(myBirthday.ToShortDateString());
+  ```
+
+#### 2. Formatear fechas y horas
+- **Formato corto:**
+  ```csharp
+  Console.WriteLine(myValue.ToShortDateString()); // Fecha corta
+  Console.WriteLine(myValue.ToShortTimeString()); // Hora corta
+  ```
+- **Formato largo:**
+  ```csharp
+  Console.WriteLine(myValue.ToLongDateString()); // Fecha larga
+  Console.WriteLine(myValue.ToLongTimeString()); // Hora larga (con segundos)
+  ```
+
+#### 3. Operaciones matemáticas con fechas
+- **Sumar tiempo:**
+  ```csharp
+  Console.WriteLine(myValue.AddDays(3).ToLongDateString()); // Fecha en 3 días
+  Console.WriteLine(myValue.AddHours(5).ToLongTimeString()); // Hora en 5 horas
+  ```
+- **Restar tiempo:**
+  ```csharp
+  Console.WriteLine(myValue.AddDays(-3).ToLongDateString()); // Fecha hace 3 días
+  ```
+
+#### 4. Diferencias entre fechas
+Calcular la duración entre dos fechas:
+```csharp
+TimeSpan myAge = DateTime.Now.Subtract(myBirthday);
+Console.WriteLine(myAge.TotalDays); // Total de días desde la fecha de nacimiento
+```
+
+#### 5. Otras operaciones comunes
+- **Obtener partes específicas:**
+  ```csharp
+  Console.WriteLine(myValue.Month); // Mes actual
+  ```
+- **Crear fechas desde cadenas:**
+  ```csharp
+  DateTime parsedDate = DateTime.Parse("25/12/1990");
+  ```
+
+---
