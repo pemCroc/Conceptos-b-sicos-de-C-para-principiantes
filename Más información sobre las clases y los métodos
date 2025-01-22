@@ -1,0 +1,82 @@
+### Video 15
+
+### Conceptos clave
+
+#### 1. Ciclo de vida de los objetos
+- **Creación:** Al usar `new`, el .NET Framework asigna un espacio en memoria para el objeto.
+- **Referencia:** Una variable, como `myCar`, actúa como un "mango" que apunta al objeto en memoria.
+- **Destrucción:** Cuando no hay referencias al objeto, el recolector de basura lo elimina para liberar memoria.
+
+#### Ejemplo:
+```csharp
+Car myCar = new Car(); // Asigna memoria y referencia
+myCar = null; // El objeto queda sin referencia y es elegible para eliminación
+```
+
+---
+
+#### 2. Constructores
+Un constructor es un método especial que se ejecuta al crear un objeto. Sirve para inicializar las propiedades del objeto o realizar configuraciones necesarias.
+
+**Constructor básico:**
+```csharp
+public class Car
+{
+    public string Make { get; set; }
+
+    public Car() // Constructor
+    {
+        Make = "Nissan"; // Inicializa propiedades
+    }
+}
+
+Car myCar = new Car();
+Console.WriteLine(myCar.Make); // Nissan
+```
+
+**Constructores sobrecargados:**
+Puedes definir varios constructores con diferentes parámetros:
+```csharp
+public Car(string make)
+{
+    Make = make;
+}
+
+Car myCar = new Car("Toyota");
+```
+
+---
+
+#### 3. Métodos y propiedades estáticas
+El modificador `static` indica que un método o propiedad pertenece a la clase y no a una instancia específica.
+
+**Método estático:**
+```csharp
+public static void DisplayMessage()
+{
+    Console.WriteLine("Mensaje desde un método estático");
+}
+
+Car.DisplayMessage(); // Llamada sin crear un objeto
+```
+
+- **Características:**
+  - No pueden acceder a propiedades o métodos no estáticos de la clase.
+  - Son ideales para utilidades y operaciones que no dependen del estado de una instancia.
+
+---
+
+#### 4. Referencias y manejo de memoria
+- Varias referencias pueden apuntar al mismo objeto:
+  ```csharp
+  Car myCar = new Car();
+  Car anotherCar = myCar; // Ambas referencias apuntan al mismo objeto
+  ```
+  Cambiar una afecta a ambas, ya que son "mangos" al mismo lugar en memoria.
+- **Eliminar referencias:**
+  ```csharp
+  myCar = null;
+  ```
+  El objeto es eliminado por el recolector de basura si no hay otras referencias.
+
+---
