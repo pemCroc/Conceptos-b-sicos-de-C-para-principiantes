@@ -1,0 +1,111 @@
+### Video 18
+
+### Conceptos clave
+
+#### 1. Enumeraciones (`enum`)
+- Una enumeración es un tipo de dato que asigna nombres legibles a valores numéricos.
+- Ayuda a limitar y validar los valores posibles de una propiedad.
+
+**Declaración de una enumeración:**
+```csharp
+public enum Status
+{
+    NotStarted, // 0
+    InProgress, // 1
+    OnHold,     // 2
+    Completed,  // 3
+    Deleted     // 4
+}
+```
+
+**Uso de una enumeración en una clase:**
+```csharp
+public class ToDo
+{
+    public string Description { get; set; }
+    public Status CurrentStatus { get; set; }
+}
+```
+
+**Asignación de valores:**
+```csharp
+ToDo task = new ToDo
+{
+    Description = "Learn C#",
+    CurrentStatus = Status.InProgress
+};
+```
+
+---
+
+#### 2. Estructura de la instrucción `switch`
+El `switch` evalúa una expresión y ejecuta el código asociado al caso coincidente.
+
+**Sintaxis:**
+```csharp
+switch (variable)
+{
+    case valor1:
+        // Acción para valor1
+        break;
+    case valor2:
+        // Acción para valor2
+        break;
+    default:
+        // Acción por defecto
+        break;
+}
+```
+
+**Ejemplo:**
+```csharp
+switch (task.CurrentStatus)
+{
+    case Status.NotStarted:
+        Console.WriteLine("Task not started.");
+        break;
+    case Status.Completed:
+        Console.WriteLine("Task completed.");
+        break;
+    default:
+        Console.WriteLine("Unknown status.");
+        break;
+}
+```
+
+---
+
+#### 3. Integración de `enum` y `switch`
+- Combinar `switch` con enumeraciones permite organizar decisiones basadas en los valores de la enumeración de manera clara y concisa.
+
+**Ejemplo:** Cambiar colores de consola según el estado de la tarea.
+```csharp
+foreach (var task in tasks)
+{
+    switch (task.CurrentStatus)
+    {
+        case Status.NotStarted:
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            break;
+        case Status.InProgress:
+            Console.ForegroundColor = ConsoleColor.Green;
+            break;
+        case Status.Completed:
+            Console.ForegroundColor = ConsoleColor.Blue;
+            break;
+        default:
+            Console.ForegroundColor = ConsoleColor.Gray;
+            break;
+    }
+    Console.WriteLine(task.Description);
+}
+```
+
+---
+
+### Ventajas de las enumeraciones
+1. **Descriptivas:** Los valores tienen nombres significativos en lugar de números o cadenas.
+2. **Seguras:** Eliminan errores comunes, como errores tipográficos.
+3. **Compatibles:** Los valores subyacentes se almacenan como enteros, facilitando su uso con bases de datos y otras estructuras.
+
+---
