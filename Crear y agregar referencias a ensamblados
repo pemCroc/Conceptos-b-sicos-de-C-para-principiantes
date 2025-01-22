@@ -1,0 +1,74 @@
+### Video 16
+
+### Conceptos clave
+
+#### 1. Agregar referencias del .NET Framework
+El .NET Framework incluye un conjunto amplio de ensamblados que contienen clases y métodos útiles para distintas funcionalidades. Si necesitamos un ensamblado que no está referenciado por defecto, podemos agregarlo manualmente.
+
+**Pasos:**
+1. En el **Solution Explorer**, haz clic derecho sobre **References** y selecciona **Add Reference**.
+2. En la ventana de referencia, selecciona la pestaña **Framework**.
+3. Marca el ensamblado deseado (por ejemplo, `System.Net`) y haz clic en **OK**.
+4. El ensamblado ahora está disponible en el proyecto y puedes usar sus clases y métodos.
+
+#### Ejemplo:
+```csharp
+using System.Net;
+
+WebClient client = new WebClient();
+string content = client.DownloadString("https://example.com");
+Console.WriteLine(content);
+```
+
+---
+
+#### 2. Instalar paquetes con NuGet
+NuGet es un gestor de paquetes que permite agregar bibliotecas externas al proyecto, muchas de las cuales son de código abierto o proporcionadas por Microsoft.
+
+**Pasos:**
+1. Ve al menú **Tools > NuGet Package Manager > Manage NuGet Packages for Solution**.
+2. Busca el paquete deseado en la barra de búsqueda (por ejemplo, `Entity Framework`).
+3. Selecciona el paquete y haz clic en **Install**.
+4. Acepta los términos de uso y el paquete se instalará junto con sus dependencias.
+
+**Ejemplo: **
+Para instalar `Entity Framework`:
+```plaintext
+EntityFramework instalado desde NuGet para gestión de bases de datos.
+```
+
+---
+
+#### 3. Crear y referenciar una biblioteca de clases personalizada
+Las bibliotecas de clases permiten reutilizar código en múltiples proyectos.
+
+**Crear una biblioteca de clases:**
+1. Crea un nuevo proyecto de tipo **Class Library**.
+2. Define clases y métodos en este proyecto.
+3. Compila el proyecto para generar un archivo `.dll`.
+
+**Referenciar una biblioteca en otro proyecto:**
+1. En el proyecto cliente, haz clic derecho sobre **References** y selecciona **Add Reference**.
+2. Usa la opción **Browse** para localizar el archivo `.dll` generado o selecciona el proyecto en la pestaña **Projects** si ambos están en la misma solución.
+
+**Ejemplo:**
+```csharp
+// Biblioteca
+public class Scraper
+{
+    public string ScrapeWebPage(string url)
+    {
+        WebClient client = new WebClient();
+        return client.DownloadString(url);
+    }
+}
+
+// Cliente
+using MyLibrary;
+
+Scraper scraper = new Scraper();
+string content = scraper.ScrapeWebPage("https://example.com");
+Console.WriteLine(content);
+```
+---
+
