@@ -1,0 +1,145 @@
+### Video 10
+---
+
+### Conceptos
+
+#### Iteración con `while`
+La instrucción `while` evalúa una condición antes de ejecutar el bloque de código. Si la condición es verdadera, se ejecuta el bloque; si no, se omite.
+
+#### Iteración con `do-while`
+A diferencia de `while`, el bloque de código en `do-while` se ejecuta al menos una vez antes de evaluar la condición.
+
+---
+
+### Ejemplo: Menú interactivo en consola
+
+Se crea un menú interactivo que permite elegir entre opciones hasta que el usuario decida salir.
+
+#### Estructura del programa:
+1. **Menú principal:**
+   - Imprime opciones para el usuario.
+   - Elige acciones basadas en la entrada del usuario.
+2. **Uso de `while` para mantener el menú activo:**
+   - Se utiliza una variable booleana `displayMenu` para mantener el menú visible mientras su valor sea `true`.
+3. **Opciones:**
+   - Mostrar un rango de números (“Print Numbers”).
+   - Juego de adivinanza (“Guessing Game”).
+
+```csharp
+bool displayMenu = true;
+while (displayMenu)
+{
+    displayMenu = MainMenu();
+}
+```
+
+#### Detalles clave del código:
+- **Entrada y salida:** La función `MainMenu` devuelve un valor booleano según la opción seleccionada.
+- **Salir del menú:** Al elegir la opción “Exit”, se devuelve `false`, lo que finaliza el bucle.
+
+---
+
+### Ejemplo Juego: "Print Numbers"
+
+Pide al usuario ingresar un número y luego imprime todos los números desde 1 hasta el valor ingresado.
+
+```csharp
+static void PrintNumbers()
+{
+    Console.Clear();
+    Console.WriteLine("Escribe un número:");
+    int result = int.Parse(Console.ReadLine());
+    int counter = 1;
+
+    while (counter <= result)
+    {
+        Console.Write(counter + " ");
+        counter++;
+    }
+    Console.WriteLine();
+}
+```
+
+- **Validación:** Asegúrate de manejar entradas inválidas para evitar errores.
+- **Función adicional:** Se agrega `Console.Clear()` para limpiar la consola antes de ejecutar cada opción.
+
+---
+
+### Ejemplo Juego: "Guessing Game"
+
+El usuario intenta adivinar un número aleatorio entre 1 y 10.
+
+#### Lógica del juego:
+1. Se genera un número aleatorio utilizando la clase `Random`.
+2. El usuario ingresa un valor hasta acertar.
+3. Se utiliza un bucle `do-while` para garantizar que el juego se ejecute al menos una vez.
+
+```csharp
+static void GuessingGame()
+{
+    Console.Clear();
+    Random random = new Random();
+    int randomNumber = random.Next(1, 11);
+    bool incorrect = true;
+    int guesses = 0;
+
+    do
+    {
+        Console.WriteLine("Adivina el número (entre 1 y 10):");
+        int guess = int.Parse(Console.ReadLine());
+        guesses++;
+
+        if (guess == randomNumber)
+        {
+            Console.WriteLine($"¡Correcto! Lo lograste en {guesses} intentos.");
+            incorrect = false;
+        }
+        else
+        {
+            Console.WriteLine("Incorrecto, intenta nuevamente.");
+        }
+    } while (incorrect);
+}
+```
+
+- **Uso de `Random`:** Permite generar el número aleatorio.
+- **Control de intentos:** La variable `guesses` registra el número de intentos.
+- **Condición de salida:** Cuando el usuario adivina el número, se cambia el valor de `incorrect` a `false`.
+
+---
+
+### Diferencia entre `while` y `do-while`
+- **`while`:** Evalúa la condición antes de ejecutar el bloque de código. Si la condición es falsa desde el inicio, el bloque no se ejecuta.
+- **`do-while`:** Ejecuta el bloque de código al menos una vez antes de evaluar la condición.
+
+---
+
+**Estructura final del menú principal**
+
+```csharp
+static bool MainMenu()
+{
+    Console.WriteLine("1. Print Numbers");
+    Console.WriteLine("2. Guessing Game");
+    Console.WriteLine("3. Exit");
+    string choice = Console.ReadLine();
+
+    switch (choice)
+    {
+        case "1":
+            PrintNumbers();
+            return true;
+        case "2":
+            GuessingGame();
+            return true;
+        case "3":
+            return false;
+        default:
+            Console.WriteLine("Opción no válida, intenta nuevamente.");
+            return true;
+    }
+}
+```
+
+---
+
